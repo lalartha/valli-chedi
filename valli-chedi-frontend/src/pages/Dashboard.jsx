@@ -7,6 +7,7 @@ import AchanCheckIn from '../components/reminders/AchanCheckIn';
 import NextEvent from '../components/activities/NextEvent';
 import WisdomBar from '../components/common/WisdomBar';
 import Loading from '../components/common/Loading';
+import ValliDebt from '../components/valli/ValliDebt';
 import { useValliState } from '../hooks/useValliState';
 import { useVallis } from '../hooks/useVallis';
 import { useActivities } from '../hooks/useActivities';
@@ -82,6 +83,7 @@ export default function Dashboard() {
               <p>🌱 Nothing urgent.<br/>The chedi is resting.</p>
             </div>
           )}
+          <ValliDebt />
         </div>
 
         {/* Bottom left — Active Vallis */}

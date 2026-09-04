@@ -34,10 +34,10 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-// Rate limiting — 100 requests per 15 minutes per IP
+// Rate limiting — generous in development
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 5000,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

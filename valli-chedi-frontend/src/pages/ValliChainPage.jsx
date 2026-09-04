@@ -1,10 +1,11 @@
-import { Shield, FileText, Clock, MapPin, Phone, Home as HomeIcon, AlertTriangle } from 'lucide-react';
+import { useState } from 'react';
+import { Shield, FileText, Clock, MapPin, Phone, Home as HomeIcon, AlertTriangle, Scissors } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 import Loading from '../components/common/Loading';
 import EmptyState from '../components/common/EmptyState';
-import { useVallis } from '../hooks/useVallis';
+import { useVallis, useResolveValli } from '../hooks/useVallis';
 import './ValliChainPage.css';
 
 const CATEGORY_ICONS = {
@@ -25,10 +26,23 @@ function getSeverityVariant(severity) {
 
 export default function ValliChainPage() {
   const { data, isLoading } = useVallis();
+  const resolveMutation = useResolveValli();
+  const [cancellingId, setCancellingId] = useState(null);
 
   if (isLoading) return <Loading />;
 
   const vallis = data?.vallis || [];
+
+  const handleCancelValli = async (valliId) => {
+    try {
+      setCancellingId(valliId);
+      await resolveMutation.mutateAsync(valliId);
+    } catch (err) {
+      console.error('Failed to cancel valli:', err);
+    } finally {
+      setCancellingId(null);
+    }
+  };
 
   // Group vallis by activity
   const grouped = {};
@@ -55,6 +69,9 @@ export default function ValliChainPage() {
               <div className="chain-group__timeline">
                 {chainVallis.map((valli, index) => {
                   const Icon = CATEGORY_ICONS[valli.category] || FileText;
+                  const isActive = valli.status !== 'RESOLVED';
+                  const isCancelling = cancellingId === valli.id;
+
                   return (
                     <div key={valli.id} className="chain-node">
                       <div className="chain-node__connector">
@@ -68,7 +85,9 @@ export default function ValliChainPage() {
                       <div className="chain-node__content">
                         <div className="chain-node__header">
                           <h4 className="chain-node__title">{valli.title}</h4>
-                          <span className="chain-node__points">+{valli.growth_points} pts</span>
+                          <span className="chain-node__points">
+                            {valli.status === 'RESOLVED' ? 'Pruned' : `+${valli.growth_points} pts`}
+                          </span>
                         </div>
                         <div className="chain-node__meta">
                           <Badge variant={getSeverityVariant(valli.severity)}>
@@ -77,6 +96,18 @@ export default function ValliChainPage() {
                           <Badge variant={valli.status === 'RESOLVED' ? 'success' : 'warning'}>
                             {valli.status}
                           </Badge>
+
+                          {isActive && (
+                            <button
+                              className="chain-node__cancel-btn"
+                              onClick={() => handleCancelValli(valli.id)}
+                              disabled={isCancelling}
+                              title="Cancel this Valli, deduct points & shrink plant"
+                            >
+                              <Scissors size={12} />
+                              <span>{isCancelling ? 'Pruning...' : 'Cancel Valli'}</span>
+                            </button>
+                          )}
                         </div>
                         {valli.description && (
                           <p className="chain-node__description">{valli.description}</p>

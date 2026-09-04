@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, Shield, Clock, MapPin, Phone, Home as HomeIcon, AlertTriangle, Zap } from 'lucide-react';
+import { FileText, Shield, Clock, MapPin, Phone, Home as HomeIcon, AlertTriangle, Zap, Scissors } from 'lucide-react';
 import Card, { CardHeader, CardTitle } from '../common/Card';
+import { useResolveValli } from '../../hooks/useVallis';
 import './ValliList.css';
 
 const CATEGORY_ICONS = {
@@ -48,8 +50,28 @@ function timeAgo(dateString) {
 
 export default function ValliList({ vallis = [], totalCount = 0 }) {
   const navigate = useNavigate();
+  const resolveMutation = useResolveValli();
+  const [cancellingId, setCancellingId] = useState(null);
+  const [feedback, setFeedback] = useState(null);
+
   const displayVallis = vallis.slice(0, 5);
   const remaining = totalCount - displayVallis.length;
+
+  const handleCancelValli = async (valli) => {
+    try {
+      setCancellingId(valli.id);
+      await resolveMutation.mutateAsync(valli.id);
+      setFeedback({
+        title: valli.title,
+        points: valli.growth_points || 0,
+      });
+      setTimeout(() => setFeedback(null), 4000);
+    } catch (err) {
+      console.error('Failed to cancel valli:', err);
+    } finally {
+      setCancellingId(null);
+    }
+  };
 
   return (
     <Card className="valli-list" padding="md">
@@ -65,14 +87,23 @@ export default function ValliList({ vallis = [], totalCount = 0 }) {
         )}
       </CardHeader>
 
+      {/* Cancellation confirmation banner */}
+      {feedback && (
+        <div className="valli-list__feedback">
+          <span>✂️ Cancelled "{feedback.title}" (-{feedback.points} pts). The chedi has shrunk!</span>
+        </div>
+      )}
+
       {displayVallis.length === 0 ? (
         <div className="valli-list__empty">
-          <p>No vallis yet.<br/>Enjoy the peace while it lasts.</p>
+          <p>No vallis active.<br/>Enjoy the peace while it lasts. 🌿</p>
         </div>
       ) : (
         <div className="valli-list__items">
           {displayVallis.map((valli) => {
             const Icon = CATEGORY_ICONS[valli.category] || FileText;
+            const isCancelling = cancellingId === valli.id;
+
             return (
               <div key={valli.id} className="valli-list__item">
                 <div className="valli-list__icon">
@@ -89,6 +120,17 @@ export default function ValliList({ vallis = [], totalCount = 0 }) {
                   <span className="valli-list__time">
                     {valli.created_at ? timeAgo(valli.created_at) : ''}
                   </span>
+                </div>
+                <div className="valli-list__action">
+                  <button
+                    className="valli-list__cancel-btn"
+                    onClick={() => handleCancelValli(valli)}
+                    disabled={isCancelling}
+                    title="Cancel this Valli, deduct points & shrink plant"
+                  >
+                    <Scissors size={13} />
+                    <span>{isCancelling ? 'Pruning...' : 'Cancel'}</span>
+                  </button>
                 </div>
               </div>
             );

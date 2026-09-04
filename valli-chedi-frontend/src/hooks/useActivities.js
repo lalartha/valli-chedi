@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getActivities, createActivity, updateActivity, deleteActivity } from '../api/activities';
+import { getActivities, createActivity, updateActivity, deleteActivity, previewActivity } from '../api/activities';
 
 export function useActivities(params = {}) {
   return useQuery({
@@ -20,6 +20,12 @@ export function useCreateActivity() {
       queryClient.invalidateQueries({ queryKey: ['valli-state'] });
       queryClient.invalidateQueries({ queryKey: ['reminders'] });
     },
+  });
+}
+
+export function usePreviewActivity() {
+  return useMutation({
+    mutationFn: (data) => previewActivity(data),
   });
 }
 

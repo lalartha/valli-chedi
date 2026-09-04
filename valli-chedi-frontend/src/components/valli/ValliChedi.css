@@ -1,6 +1,6 @@
 /* ============================================================================
-   VALLI CHEDI — Botanical Creeper Styling
-   Clean, responsive container for the signature Kerala-style vine visual
+   VALLI CHEDI — Dynamic Data-Driven Botanical Creeper Styling
+   Responsive SVG plant that scales, grows, and shrinks dynamically
    ============================================================================ */
 
 .valli-chedi {
@@ -19,61 +19,71 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  max-width: 520px;
-  min-height: 320px;
+  max-width: 620px;
   position: relative;
-  padding: var(--space-sm) var(--space-md) var(--space-md);
-  border-radius: var(--radius-xl);
+  padding: 0 var(--space-xs);
   transition: transform var(--transition-base);
 }
 
 .valli-chedi__svg {
   width: 100%;
-  max-width: 480px;
+  max-width: 580px;
   height: auto;
   min-height: 280px;
-  max-height: 420px;
+  max-height: 440px;
   display: block;
   overflow: visible;
-  filter: drop-shadow(0 4px 12px rgba(42, 74, 27, 0.05));
+  filter: drop-shadow(0 6px 16px rgba(45, 78, 28, 0.07));
   transition: all 400ms ease;
 }
 
 /* Subtle soil styling */
 .valli-chedi__soil {
-  transform-origin: 190px 305px;
+  transform-origin: 330px 545px;
 }
 
-/* Caption and subtle humor copy */
-.valli-chedi__caption {
+/* Humorous parental consequence alert badge */
+.valli-chedi__consequence-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 6px 16px;
+  background: var(--brown-50);
+  border: 1px solid var(--brown-light);
+  border-radius: var(--radius-full);
   margin-top: var(--space-xs);
-  text-align: center;
-  max-width: 320px;
+  max-width: 95%;
+  box-shadow: 0 1px 3px rgba(118, 82, 56, 0.06);
+  transition: all var(--transition-fast);
 }
 
-.valli-chedi__status-text {
+.valli-chedi__consequence-icon {
+  font-size: 0.9rem;
+  color: var(--warning);
+}
+
+.valli-chedi__consequence-text {
   font-size: var(--font-xs);
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  font-style: italic;
-  transition: color var(--transition-fast);
+  font-weight: 600;
+  color: var(--brown-dark);
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  text-align: center;
 }
 
-.valli-chedi:hover .valli-chedi__status-text {
-  color: var(--sap-green-dark);
+.valli-chedi:hover .valli-chedi__consequence-badge {
+  background: #FDF4E7;
+  border-color: #E2C9A0;
 }
 
 /* Tablet Layout */
 @media (max-width: 1024px) {
   .valli-chedi__stage {
-    max-width: 440px;
-    min-height: 280px;
+    max-width: 520px;
   }
 
   .valli-chedi__svg {
-    max-width: 420px;
+    max-width: 480px;
     max-height: 380px;
   }
 }
@@ -86,17 +96,15 @@
 
   .valli-chedi__stage {
     max-width: 100%;
-    min-height: 240px;
-    padding: var(--space-xs);
   }
 
   .valli-chedi__svg {
-    max-width: 340px;
-    max-height: 320px;
+    max-width: 360px;
+    max-height: 300px;
     min-height: 220px;
   }
 
-  .valli-chedi__status-text {
-    font-size: 0.7rem;
+  .valli-chedi__consequence-text {
+    font-size: 0.68rem;
   }
 }

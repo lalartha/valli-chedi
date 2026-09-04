@@ -1,24 +1,14 @@
 import Card, { CardTitle } from '../common/Card';
 import './GrowthLevel.css';
 
-const LEVEL_LABELS = {
-  1: 'Seed',
-  2: 'Sprout',
-  3: 'Small Vine',
-  4: 'Growing',
-  5: 'Growing',
-  6: 'Overgrown',
-  7: 'Takeover',
-};
-
 const LEVEL_DESCRIPTIONS = {
-  1: 'A tiny seed. The chedi barely exists.',
-  2: 'A sprout emerges. The consequences have begun.',
-  3: 'A small vine. It\'s growing steadily.',
-  4: 'Multiple branches reaching out.',
-  5: 'The vine is spreading nicely.',
-  6: 'The chedi has taken notice.',
-  7: 'VALLI CHEDI HAS ESCAPED CONTROL.',
+  1: 'A tiny seed. Parents think you are peacefully studying.',
+  2: 'Sprout. Achan heard your scooter engine after 10 PM.',
+  3: 'Small vine. Amma has initiated preliminary interrogation.',
+  4: "'Sit in the hall': The dreaded serious talk has commenced.",
+  5: 'Danger Zone: Achan threatened to kick you out of the house.',
+  6: 'High-voltage family dispute: emotional speeches & luggage packed.',
+  7: 'Uncontained: You have been officially expelled from the house.',
 };
 
 const MILESTONE_LEVELS = [
@@ -80,7 +70,7 @@ export default function GrowthLevel({ growthLevel = 1, growthPercentage = 0 }) {
 
       {/* Wisdom quote */}
       <div className="growth-level__wisdom">
-        <p>It's not the work.<br/>It's everything that comes with it. 😅</p>
+        <p>You can handle the work.<br/>Can you handle what comes after? 😅</p>
       </div>
     </Card>
   );

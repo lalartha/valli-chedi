@@ -53,6 +53,47 @@ export const createActivity = asyncHandler(async (req, res) => {
 });
 
 /**
+ * POST /api/activities/preview
+ * Simulate an activity and generate structured consequences without saving to DB.
+ */
+export const previewActivity = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const {
+    title, category, startTime, endTime,
+    location, district, state, overnight,
+    returnHomeTime, returnedHome,
+    permissionRequestedAt,
+  } = req.body;
+
+  if (!title || !startTime) {
+    throw new AppError('Title and startTime are required for preview.', 400);
+  }
+
+  // Create a mock activity object for simulation
+  const activity = {
+    title,
+    category,
+    startTime,
+    endTime,
+    location,
+    district,
+    state,
+    overnight,
+    returnHomeTime,
+    returnedHome,
+  };
+
+  const preview = await consequenceEngine.simulateActivity(userId, activity, {
+    permissionRequestedAt,
+  });
+
+  res.json({
+    message: 'Activity simulated.',
+    preview,
+  });
+});
+
+/**
  * GET /api/activities
  * List all activities for the authenticated user.
  */

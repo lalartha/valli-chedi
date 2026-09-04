@@ -106,7 +106,10 @@ export async function updateValliState(userId) {
     .select('growth_points')
     .eq('user_id', userId);
 
-  const totalPoints = (growthData || []).reduce((sum, e) => sum + (e.growth_points || 0), 0);
+  const totalPoints = Math.max(
+    0,
+    (growthData || []).reduce((sum, e) => sum + (e.growth_points || 0), 0)
+  );
 
   // Count active and resolved vallis
   const activeVallis = await valliModel.countActive(userId);

@@ -5,10 +5,12 @@ import {
   getActivity,
   updateActivity,
   deleteActivity,
+  previewActivity,
 } from '../controllers/activityController.js';
 
 const router = Router();
 
+router.post('/preview', previewActivity);
 router.post('/', createActivity);
 router.get('/', getActivities);
 router.get('/:id', getActivity);

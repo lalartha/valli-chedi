@@ -9,6 +9,25 @@
   color: var(--sap-green);
 }
 
+.valli-list__feedback {
+  background: var(--sap-green-light);
+  border: 1px solid var(--sap-green-200);
+  color: var(--sap-green-dark);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .valli-list__items {
   display: flex;
   flex-direction: column;
@@ -19,7 +38,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   transition: background var(--transition-fast);
 }
@@ -79,6 +98,37 @@
 .valli-list__time {
   font-size: var(--font-xs);
   color: var(--text-muted);
+}
+
+.valli-list__action {
+  flex-shrink: 0;
+  margin-left: var(--space-xs);
+}
+
+.valli-list__cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--brown-dark);
+  background: var(--brown-50);
+  border: 1px solid var(--brown-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.valli-list__cancel-btn:hover:not(:disabled) {
+  background: var(--danger-light);
+  border-color: #E8B4A8;
+  color: var(--danger);
+}
+
+.valli-list__cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .valli-list__more {

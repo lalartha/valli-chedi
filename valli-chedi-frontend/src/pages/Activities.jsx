@@ -7,7 +7,9 @@ import Button from '../components/common/Button';
 import Badge from '../components/common/Badge';
 import Loading from '../components/common/Loading';
 import EmptyState from '../components/common/EmptyState';
-import { useActivities, useCreateActivity } from '../hooks/useActivities';
+import ConsequenceWarningDialog from '../components/activities/ConsequenceWarningDialog';
+import ConsequenceSummaryModal from '../components/activities/ConsequenceSummaryModal';
+import { useActivities, useCreateActivity, usePreviewActivity } from '../hooks/useActivities';
 import './Activities.css';
 
 const CATEGORIES = [
@@ -57,6 +59,13 @@ export default function Activities() {
   const [showForm, setShowForm] = useState(false);
   const { data, isLoading } = useActivities();
   const createMutation = useCreateActivity();
+  const previewMutation = usePreviewActivity();
+
+  // Modal states
+  const [previewData, setPreviewData] = useState(null);
+  const [showWarning, setShowWarning] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
+  const [createdActivityData, setCreatedActivityData] = useState(null);
 
   const [form, setForm] = useState({
     title: '', category: 'OTHER', startTime: '', endTime: '',
@@ -66,14 +75,42 @@ export default function Activities() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createMutation.mutateAsync(form);
-    setForm({
-      title: '', category: 'OTHER', startTime: '', endTime: '',
-      location: '', district: '', state: 'Kerala',
-      overnight: false, returnHomeTime: '',
-    });
-    setShowForm(false);
+    try {
+      const response = await previewMutation.mutateAsync(form);
+      const preview = response.preview;
+      
+      if (preview?.warning?.required) {
+        setPreviewData(preview);
+        setShowWarning(true);
+      } else {
+        await executeCreate(form);
+      }
+    } catch (err) {
+      console.error("Preview failed", err);
+    }
   };
+
+  const executeCreate = async (formData) => {
+    try {
+      const response = await createMutation.mutateAsync(formData);
+      setCreatedActivityData(response.formatted); // Assuming backend returns .formatted
+      setShowWarning(false);
+      setShowForm(false);
+      setShowSummary(true);
+      setForm({
+        title: '', category: 'OTHER', startTime: '', endTime: '',
+        location: '', district: '', state: 'Kerala',
+        overnight: false, returnHomeTime: '',
+      });
+    } catch (err) {
+      console.error("Create failed", err);
+    }
+  };
+
+  const handleCancelWarning = () => {
+    setShowWarning(false);
+  };
+
 
   if (isLoading) return <Loading />;
 
@@ -208,6 +245,21 @@ export default function Activities() {
             <ActivityCard key={activity.id} activity={activity} />
           ))}
         </div>
+      )}
+
+      {showWarning && previewData && (
+        <ConsequenceWarningDialog 
+          preview={previewData} 
+          onConfirm={() => executeCreate(form)} 
+          onCancel={handleCancelWarning} 
+        />
+      )}
+
+      {showSummary && createdActivityData && (
+        <ConsequenceSummaryModal 
+          data={createdActivityData} 
+          onClose={() => setShowSummary(false)} 
+        />
       )}
     </div>
   );

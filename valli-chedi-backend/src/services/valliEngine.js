@@ -77,15 +77,28 @@ export async function resolveValli(userId, valliId) {
     resolvedAt: new Date().toISOString(),
   });
 
-  // Log the resolution event
-  await valliModel.createEvent(valliId, 'RESOLVED', 'Valli has been resolved.', 0);
+  const pointsToDeduct = valli.growth_points || 0;
 
-  // Recalculate the user's valli state
-  await growthEngine.recalculateState(userId);
+  // Log the resolution event
+  await valliModel.createEvent(
+    valliId,
+    'RESOLVED',
+    `Valli cancelled/resolved. ${pointsToDeduct} points deducted.`,
+    -pointsToDeduct
+  );
+
+  // Deduct points from user growth state if points were present
+  if (pointsToDeduct > 0) {
+    await growthEngine.addGrowthPoints(userId, valliId, -pointsToDeduct, 'VALLI_CANCELLED');
+  } else {
+    // Recalculate the user's valli state
+    await growthEngine.recalculateState(userId);
+  }
 
   return {
     ...resolved,
-    message: 'Valli resolved. The chedi remembers, but the branch has been trimmed. 🌿✂️',
+    deductedPoints: pointsToDeduct,
+    message: `Valli cancelled. ${pointsToDeduct} points deducted. The chedi has been pruned. 🌿✂️`,
   };
 }
 

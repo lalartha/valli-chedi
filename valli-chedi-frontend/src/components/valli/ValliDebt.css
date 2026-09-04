@@ -1,0 +1,82 @@
+.valli-debt-card {
+  background: var(--bg-surface);
+  margin-top: 1rem;
+}
+
+.valli-debt-card.empty p {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+}
+
+.valli-debt-card h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.valli-debt-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.debt-score {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ef4444; /* red to indicate debt */
+  font-family: monospace;
+}
+
+.debt-subtitle {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.debt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.debt-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-background);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.debt-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.debt-reason {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.debt-points {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.debt-footer {
+  margin: 1rem 0 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-style: italic;
+}

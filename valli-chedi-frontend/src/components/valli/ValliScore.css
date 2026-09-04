@@ -1,32 +1,36 @@
 .valli-score {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-sm);
+  position: relative;
+  z-index: 2;
 }
 
 .valli-score__number {
   display: flex;
   align-items: baseline;
   gap: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 .valli-score__value {
   font-size: var(--font-score);
-  font-weight: 800;
-  color: var(--text-primary);
+  font-weight: 900;
+  color: #2F521E;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 .valli-score__max {
-  font-size: var(--font-lg);
+  font-size: var(--font-xl);
   color: var(--text-muted);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .valli-score__severity {
   display: flex;
   align-items: center;
+  margin-top: 2px;
 }
 
 .valli-score__badge {
@@ -38,16 +42,38 @@
   color: var(--sap-green-dark);
   border-radius: var(--radius-full);
   font-size: var(--font-xs);
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .valli-score__copy {
-  font-size: var(--font-base);
-  color: var(--text-secondary);
-  line-height: 1.6;
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
   white-space: pre-line;
   margin-top: var(--space-sm);
+}
+
+.valli-score__accent-stroke {
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+.valli-score__consequence-status {
+  margin-top: var(--space-sm);
+}
+
+.valli-score__status-tag {
+  display: inline-block;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: #8C4E2D;
+  background: #FAF2EB;
+  border: 1px solid #EAD8C7;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 768px) {
