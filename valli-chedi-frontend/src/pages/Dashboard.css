@@ -1,0 +1,123 @@
+.dashboard {
+  padding-bottom: var(--space-2xl);
+}
+
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto auto;
+  gap: var(--space-xl);
+}
+
+.dashboard__left {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dashboard__score-plant {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.dashboard__right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.dashboard__bottom-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dashboard__bottom-right {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.dashboard__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.dashboard__error p {
+  font-size: var(--font-lg);
+  color: var(--text-secondary);
+}
+
+.dashboard__error button {
+  padding: var(--space-md) var(--space-xl);
+  background: var(--sap-green);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+
+.dashboard__error button:hover {
+  background: var(--sap-green-dark);
+}
+
+.dashboard__right-empty {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.dashboard__right-empty p {
+  font-size: var(--font-base);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__right {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .dashboard__right > * {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .dashboard__bottom-left {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .dashboard__bottom-right {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard__score-plant {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__right {
+    flex-direction: column;
+  }
+}

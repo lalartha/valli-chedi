@@ -1,0 +1,110 @@
+.valli-list__view-all {
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.valli-list__view-all:hover {
+  color: var(--sap-green);
+}
+
+.valli-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.valli-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.valli-list__item:hover {
+  background: var(--sap-green-50);
+}
+
+.valli-list__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sap-green-light);
+  color: var(--sap-green);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.valli-list__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.valli-list__title {
+  font-size: var(--font-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valli-list__category {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.valli-list__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.valli-list__points {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--sap-green);
+}
+
+.valli-list__time {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.valli-list__more {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: var(--space-md);
+  margin-top: var(--space-sm);
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  transition: color var(--transition-fast);
+}
+
+.valli-list__more:hover {
+  color: var(--sap-green);
+}
+
+.valli-list__empty {
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.valli-list__empty p {
+  font-size: var(--font-base);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}

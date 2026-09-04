@@ -1,0 +1,102 @@
+/* ============================================================================
+   VALLI CHEDI — Botanical Creeper Styling
+   Clean, responsive container for the signature Kerala-style vine visual
+   ============================================================================ */
+
+.valli-chedi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+.valli-chedi__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 520px;
+  min-height: 320px;
+  position: relative;
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-radius: var(--radius-xl);
+  transition: transform var(--transition-base);
+}
+
+.valli-chedi__svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  min-height: 280px;
+  max-height: 420px;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 4px 12px rgba(42, 74, 27, 0.05));
+  transition: all 400ms ease;
+}
+
+/* Subtle soil styling */
+.valli-chedi__soil {
+  transform-origin: 190px 305px;
+}
+
+/* Caption and subtle humor copy */
+.valli-chedi__caption {
+  margin-top: var(--space-xs);
+  text-align: center;
+  max-width: 320px;
+}
+
+.valli-chedi__status-text {
+  font-size: var(--font-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  font-style: italic;
+  transition: color var(--transition-fast);
+}
+
+.valli-chedi:hover .valli-chedi__status-text {
+  color: var(--sap-green-dark);
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .valli-chedi__stage {
+    max-width: 440px;
+    min-height: 280px;
+  }
+
+  .valli-chedi__svg {
+    max-width: 420px;
+    max-height: 380px;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .valli-chedi {
+    padding: var(--space-sm) 0;
+  }
+
+  .valli-chedi__stage {
+    max-width: 100%;
+    min-height: 240px;
+    padding: var(--space-xs);
+  }
+
+  .valli-chedi__svg {
+    max-width: 340px;
+    max-height: 320px;
+    min-height: 220px;
+  }
+
+  .valli-chedi__status-text {
+    font-size: 0.7rem;
+  }
+}

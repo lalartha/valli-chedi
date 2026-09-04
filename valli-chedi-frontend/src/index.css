@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================================
+   VALLI CHEDI — Design System
+   Minimal • White-dominant • Sap-green accent • Brown secondary
+   ============================================================================ */
+
+:root {
+  /* Primary palette */
+  --sap-green: #4F7F32;
+  --sap-green-dark: #365D24;
+  --sap-green-light: #EAF2E3;
+  --sap-green-50: #F4F8F1;
+  --sap-green-100: #DCE8D4;
+  --sap-green-200: #B8D4A8;
+
+  /* Secondary palette */
+  --brown: #765238;
+  --brown-dark: #523724;
+  --brown-light: #EFE5DA;
+  --brown-50: #FAF6F2;
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --off-white: #FAFAF7;
+  --bg: #F5F5F0;
+  --text-primary: #1E241B;
+  --text-secondary: #6C7267;
+  --text-muted: #9CA396;
+  --border: #E6E8E0;
+  --border-light: #F0F1EC;
+
+  /* Semantic */
+  --danger: #C44B36;
+  --danger-light: #FDF0ED;
+  --warning: #D4890B;
+  --warning-light: #FFF8EB;
+  --success: #3D8B37;
+  --success-light: #EDF7EC;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-xs: 0.6875rem;    /* 11px */
+  --font-sm: 0.75rem;      /* 12px */
+  --font-base: 0.875rem;   /* 14px */
+  --font-md: 1rem;         /* 16px */
+  --font-lg: 1.125rem;     /* 18px */
+  --font-xl: 1.5rem;       /* 24px */
+  --font-2xl: 2rem;        /* 32px */
+  --font-3xl: 2.5rem;      /* 40px */
+  --font-4xl: 3.5rem;      /* 56px */
+  --font-score: 4.5rem;    /* 72px — for the big score number */
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(30, 36, 27, 0.04);
+  --shadow-md: 0 2px 8px rgba(30, 36, 27, 0.06);
+  --shadow-lg: 0 4px 16px rgba(30, 36, 27, 0.08);
+  --shadow-card: 0 1px 3px rgba(30, 36, 27, 0.04), 0 1px 2px rgba(30, 36, 27, 0.02);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-plant: 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --sidebar-width: 220px;
+  --header-height: 72px;
+  --mobile-nav-height: 64px;
+}
+
+/* ============================================================================
+   Reset & Base
+   ============================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  background-color: var(--bg);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--sap-green);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--sap-green-dark);
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, select, textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+}
+
+/* ============================================================================
+   Scrollbar
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================================================
+   Utility Classes
+   ============================================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+   Reduced Motion
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

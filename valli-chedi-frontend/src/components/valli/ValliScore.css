@@ -1,0 +1,57 @@
+.valli-score {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.valli-score__number {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.valli-score__value {
+  font-size: var(--font-score);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.valli-score__max {
+  font-size: var(--font-lg);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.valli-score__severity {
+  display: flex;
+  align-items: center;
+}
+
+.valli-score__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 4px 12px;
+  background: var(--sap-green-light);
+  color: var(--sap-green-dark);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.valli-score__copy {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-line;
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .valli-score__value {
+    font-size: var(--font-3xl);
+  }
+}

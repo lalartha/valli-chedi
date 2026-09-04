@@ -11,7 +11,7 @@
 -- You can find it in Supabase Dashboard → Authentication → Users
 DO $$
 DECLARE
-  demo_user_id UUID := '00000000-0000-0000-0000-000000000001'; -- REPLACE THIS
+  demo_user_id UUID := '797f854a-618b-44d7-9f5d-6b47591b5a2a';
   act_id UUID;
   v1_id UUID;
   v2_id UUID;

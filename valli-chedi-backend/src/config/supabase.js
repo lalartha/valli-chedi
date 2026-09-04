@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
+import fetch from 'cross-fetch';
 
 dotenv.config();
 
@@ -13,7 +14,9 @@ if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceRoleKey) {
 }
 
 // Public client — uses anon key, respects RLS
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  global: { fetch },
+});
 
 // Admin client — uses service role key, bypasses RLS
 // Use for server-side operations where the user context is already verified
@@ -22,6 +25,7 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
     autoRefreshToken: false,
     persistSession: false,
   },
+  global: { fetch },
 });
 
 export default supabase;
