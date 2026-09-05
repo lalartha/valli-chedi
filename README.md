@@ -10,9 +10,7 @@
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Arthalal C - college of engineering perumon
 
 ### Project Description
 [2-3 lines about what your project does]
