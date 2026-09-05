@@ -3,10 +3,7 @@
 # Valli Chedi 🌿 🎯
 
 ## Basic Details
-### Team Name: Valli Squad
-
-### Team Members
-- Team Lead: Arthalal C - College of Engineering Perumon
+Individual: Arthalal C - College of Engineering Perumon
 
 ### Project Description
 Valli Chedi is a humorous consequence-tracking web app designed for young adults in Indian households. It visually tracks your "valli" (trouble) score as a growing vine (chedi), representing how close you are to getting kicked out of the house.
@@ -57,14 +54,11 @@ npm run dev
 For Software:
 
 # Screenshots
-![Seed Stage](./valli-chedi-frontend/public/valli/valli-01.png)
-*Stage 1: Suspiciously peaceful. Parents assume you are studying.*
+![Seed Stage]
 
-![Sprout Stage](./valli-chedi-frontend/public/valli/valli-03.png)
-*Stage 3: Preliminary questioning. The vine is growing!*
+![Sprout Stage]
 
-![Fully Grown](./valli-chedi-frontend/public/valli/valli-05.png)
-*Stage 5: Danger Zone. Eviction is imminent!*
+![Fully Grown]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects
