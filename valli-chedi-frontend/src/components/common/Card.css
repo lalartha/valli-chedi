@@ -6,9 +6,9 @@
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-.card--pad-sm { padding: var(--space-md); }
-.card--pad-md { padding: var(--space-xl); }
-.card--pad-lg { padding: var(--space-2xl); }
+.card--pad-sm { padding: var(--space-sm); }
+.card--pad-md { padding: var(--space-lg); }
+.card--pad-lg { padding: var(--space-xl); }
 .card--pad-none { padding: 0; }
 
 .card--hover:hover {

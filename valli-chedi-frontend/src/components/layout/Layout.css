@@ -11,7 +11,7 @@
 .layout__content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-2xl) var(--space-2xl);
+  padding: 0 var(--space-xl) var(--space-xl);
 }
 
 @media (max-width: 768px) {

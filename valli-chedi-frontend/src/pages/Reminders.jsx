@@ -5,6 +5,7 @@ import Button from '../components/common/Button';
 import Badge from '../components/common/Badge';
 import Loading from '../components/common/Loading';
 import EmptyState from '../components/common/EmptyState';
+import { ACHAN_SCORE_REMARK } from '../utils/malayalamQuotes';
 import { useReminders, useCheckIn, useStopReminder } from '../hooks/useReminders';
 import './Reminders.css';
 
@@ -33,6 +34,13 @@ export default function Reminders() {
   return (
     <div className="reminders-page">
       <Header title="Reminders" subtitle="Nobody needs you every five hours. Yet." />
+
+      <div className="reminders-page__achan-remark">
+        <div className="reminders-page__achan-header">
+          <span className="reminders-page__achan-tag">👨‍🦳 Achan's Verdict</span>
+        </div>
+        <p className="reminders-page__achan-quote">"{ACHAN_SCORE_REMARK}"</p>
+      </div>
 
       <h3 className="reminders-page__section-title">
         Active Reminders ({active.length})

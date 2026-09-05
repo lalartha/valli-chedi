@@ -4,7 +4,6 @@ import ValliChedi from '../components/valli/ValliChedi';
 import GrowthLevel from '../components/valli/GrowthLevel';
 import ValliList from '../components/valli/ValliList';
 import AchanCheckIn from '../components/reminders/AchanCheckIn';
-import NextEvent from '../components/activities/NextEvent';
 import WisdomBar from '../components/common/WisdomBar';
 import Loading from '../components/common/Loading';
 import ValliDebt from '../components/valli/ValliDebt';
@@ -75,10 +74,7 @@ export default function Dashboard() {
           {achanReminder && (
             <AchanCheckIn reminder={achanReminder} />
           )}
-          {nextActivity && (
-            <NextEvent activity={nextActivity} />
-          )}
-          {!achanReminder && !nextActivity && (
+          {!achanReminder && (
             <div className="dashboard__right-empty">
               <p>🌱 Nothing urgent.<br/>The chedi is resting.</p>
             </div>

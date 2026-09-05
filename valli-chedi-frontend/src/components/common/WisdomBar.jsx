@@ -8,7 +8,7 @@ const WISDOM = [
   'You can handle the work. Can you handle what comes after?',
   'One responsibility at a time, they said. They lied.',
   'The chedi grows whether you plan or not.',
-  'Permission is a process. Consequences are immediate.',
+  'അനുവാദം ചോദിക്കാൻ മറന്നാലും, കിട്ടാനുള്ളത് കൃത്യമായി കിട്ടും.',
   'Today\'s problem is yesterday\'s "I\'ll tell them tomorrow."',
   'The vine remembers. Even if you forget.',
 ];

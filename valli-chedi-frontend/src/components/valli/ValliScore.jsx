@@ -1,5 +1,4 @@
 import Card, { CardTitle } from '../common/Card';
-import { ACHAN_SCORE_REMARK } from '../../utils/malayalamQuotes';
 import './ValliScore.css';
 
 const SEVERITY_LABELS = {
@@ -55,13 +54,7 @@ export default function ValliScore({ totalPoints = 0, severity = 'SEED', maxPoin
 
       <p className="valli-score__copy">{copy}</p>
 
-      {/* Achan's verdict on the score */}
-      <div className="valli-score__achan-remark">
-        <div className="valli-score__achan-header">
-          <span className="valli-score__achan-tag">👨‍🦳 Achan's Verdict</span>
-        </div>
-        <p className="valli-score__achan-quote">"{ACHAN_SCORE_REMARK}"</p>
-      </div>
+
 
       {/* Decorative terracotta curved accent stroke matching reference mockup */}
       <div className="valli-score__accent-stroke" aria-hidden="true">
