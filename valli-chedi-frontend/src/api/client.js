@@ -26,6 +26,12 @@ export async function apiRequest(path, options = {}) {
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      console.warn('Session expired or invalid token. Logging out...');
+      await supabase.auth.signOut();
+      window.location.href = '/'; 
+      throw new Error('Session expired. Please log in again.');
+    }
     const error = await response.json().catch(() => ({ message: 'Network error' }));
     throw new Error(error.message || `API Error: ${response.status}`);
   }

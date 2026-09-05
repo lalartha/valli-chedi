@@ -4,6 +4,7 @@
 
 ## Basic Details
 Individual: Arthalal C - College of Engineering Perumon
+Deployment Link: https://valli-chedi.vercel.app/
 
 ### Project Description
 Valli Chedi is a humorous consequence-tracking web app designed for young adults in Indian households. It visually tracks your "valli" (trouble) score as a growing vine (chedi), representing how close you are to getting kicked out of the house.
@@ -49,6 +50,11 @@ npm run dev
 cd ../valli-chedi-frontend
 npm run dev
 ```
+
+### Test Account
+To test the app without creating a new account, use the following credentials:
+- **Email**: `test@vallichedi.local`
+- **Password**: `testpassword123`
 
 ### Project Documentation
 For Software:
