@@ -24,13 +24,13 @@ const STATE_TABLE = 'valli_state';
 
 /** Growth level thresholds */
 const LEVELS = [
-  { min: 0, max: 50, level: 1, status: 'SEED', label: 'Seed 🌱' },
-  { min: 51, max: 150, level: 2, status: 'SPROUT', label: 'Sprout 🌿' },
-  { min: 151, max: 300, level: 3, status: 'SMALL_VINE', label: 'Small Vine 🌿🌿' },
-  { min: 301, max: 500, level: 4, status: 'GROWING_CHEDI', label: 'Growing Chedi 🌿🌿🌿' },
-  { min: 501, max: 750, level: 5, status: 'OVERGROWN', label: 'Overgrown ☘️☘️☘️' },
-  { min: 751, max: 1000, level: 6, status: 'VALLI_TAKEOVER', label: 'Valli Takeover 🚨🌿' },
-  { min: 1001, max: Infinity, level: 7, status: 'UNCONTAINED', label: 'Uncontained 💀🌿💀' },
+  { min: 0, max: 0, level: 1, status: 'SEED', label: 'Seed 🌱' },
+  { min: 1, max: 14, level: 2, status: 'SPROUT', label: 'Sprout 🌿' },
+  { min: 15, max: 24, level: 3, status: 'SMALL_VINE', label: 'Small Vine 🌿🌿' },
+  { min: 25, max: 49, level: 4, status: 'GROWING_CHEDI', label: 'Growing Chedi 🌿🌿🌿' },
+  { min: 50, max: 74, level: 5, status: 'OVERGROWN', label: 'Overgrown ☘️☘️☘️' },
+  { min: 75, max: 99, level: 6, status: 'VALLI_TAKEOVER', label: 'Valli Takeover 🚨🌿' },
+  { min: 100, max: Infinity, level: 7, status: 'UNCONTAINED', label: 'Uncontained 💀🌿💀' },
 ];
 
 /**

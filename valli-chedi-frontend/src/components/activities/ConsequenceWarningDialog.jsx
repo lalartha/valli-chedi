@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, Leaf } from 'lucide-react';
 import Button from '../common/Button';
+import { getRandomActivityQuote } from '../../utils/malayalamQuotes';
 import './ConsequenceWarningDialog.css';
 
 export default function ConsequenceWarningDialog({ preview, onConfirm, onCancel }) {
   const { warning, consequences, valliAdded } = preview;
+  const popupQuote = useMemo(() => getRandomActivityQuote(), []);
   
   if (!warning || !warning.required) return null;
 
@@ -24,6 +26,20 @@ export default function ConsequenceWarningDialog({ preview, onConfirm, onCancel 
             <Leaf className="warning-icon" size={24} />
           )}
           <h3>{warning.title}</h3>
+        </div>
+
+        <div style={{
+          background: 'var(--terracotta-50, #fdf4f0)',
+          border: '1px dashed var(--terracotta-300, #df957a)',
+          borderRadius: '8px',
+          padding: '8px 12px',
+          margin: '0 1.5rem 1rem 1.5rem',
+          textAlign: 'center',
+          color: 'var(--terracotta-dark, #803018)',
+          fontWeight: '700',
+          fontSize: '0.95rem'
+        }}>
+          👨‍🦳 "{popupQuote}"
         </div>
         
         <div className="warning-dialog__content">

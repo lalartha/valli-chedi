@@ -34,7 +34,8 @@
   bottom: 0;
   width: 100%;
   max-width: 500px;
-  height: 100%;
+  height: 85%;
+  max-height: 350px;
   object-fit: contain;
   object-position: bottom center;
   transform-origin: bottom center;
@@ -56,31 +57,34 @@
   pointer-events: none;
 }
 
-/* Consequence Badge (Keep existing style) */
-.valli-chedi__consequence-badge {
+/* Malayalam Stage Quote Bubble */
+.valli-chedi__malayalam-quote {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--sand-light, #faf8f5);
+  border: 1px solid var(--terracotta-200, #eed9cf);
+  border-left: 3px solid var(--terracotta, #c05d3b);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 2px 8px rgba(192, 93, 59, 0.08);
+  font-size: 0.9rem;
   z-index: 2;
-  max-width: 90%;
+  max-width: 95%;
   text-align: center;
+  animation: fadeIn 0.4s ease-out;
 }
 
-.valli-chedi__consequence-icon {
-  font-size: 1.2rem;
+.valli-chedi__malayalam-icon {
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
-.valli-chedi__consequence-text {
-  color: var(--text-primary);
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.3;
+.valli-chedi__malayalam-text {
+  color: var(--terracotta-dark, #803018);
+  font-weight: 600;
+  line-height: 1.35;
+  font-family: inherit;
 }

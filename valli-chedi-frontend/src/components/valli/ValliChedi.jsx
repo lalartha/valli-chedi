@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { VALLI_STAGE_QUOTES } from '../../utils/malayalamQuotes';
 import './ValliChedi.css';
 
 /**
  * ----------------------------------------------------------------------------
  * VALLI CHEDI — Stage Mapping
- * The backend is the source of truth for Valli points. This simply maps
- * the total consequences (valliCount) to the 10 visual stages.
+ * The backend is the source of truth for Valli points. This maps
+ * the total consequences (valliCount) to the visual stages.
  * ----------------------------------------------------------------------------
  */
-function getValliStage(valliCount) {
-  if (valliCount <= 0) return 1;
-  if (valliCount <= 4) return 2;
-  if (valliCount <= 8) return 3;
-  if (valliCount <= 12) return 4;
-  return 5;
+function getValliStage(score) {
+  if (score <= 0) return 1;
+  if (score < 15) return 3;
+  if (score < 25) return 5;
+  if (score < 50) return 7;
+  if (score < 75) return 9;
+  return 10;
 }
-
-const LEVEL_CONSEQUENCES = {
-  1: 'Suspiciously peaceful. Parents assume you are studying.',
-  2: 'Sprout. Achan noticed you were out late.',
-  3: 'Preliminary questioning: Amma asked "Who are these friends?"',
-  4: 'The Serious Talk: "Sit in the hall." Spectacles removed.',
-  5: 'High Alert: "Keep this up and pack your bags!" Achan threatened eviction.',
-  6: 'Domestic Crisis: Emotional speeches, bags placed near the door.',
-  7: 'Eviction Complete: Kicked out of the house. NRI on your own porch.',
-  8: 'Neighborhood WhatsApp group convened. Disownment papers drafted.',
-  9: 'Relatives from Gulf called to offer condolences to parents.',
-  10: 'The Valli Chedi has taken your room. You belong to the vine now.',
-};
 
 export default function ValliChedi({
   valliCount = 0,
@@ -37,6 +26,7 @@ export default function ValliChedi({
 }) {
   const stage = getValliStage(valliCount);
   const imageSrc = `/valli/valli-${String(stage).padStart(2, '0')}.png`;
+  const malayalamQuote = VALLI_STAGE_QUOTES[stage] || VALLI_STAGE_QUOTES[1];
   
   const [prevStage, setPrevStage] = useState(stage);
   const [showNotification, setShowNotification] = useState(false);
@@ -88,19 +78,30 @@ export default function ValliChedi({
               }}
               animate={{
                 opacity: 1,
-                scale: 1,
+                scale: [1, 1.04, 1],
                 y: 0,
-                // Subtle organic breathing animation once settled
-                rotate: [-0.3, 0.3, -0.3],
+                rotate: [-2, 2, -2],
+                skewX: [-1.5, 1.5, -1.5],
                 transition: {
                   opacity: { duration: 1.2, ease: "easeOut" },
-                  scale: { duration: 1.2, ease: "easeOut" },
-                  y: { duration: 1.2, ease: "easeOut" },
-                  rotate: { 
-                    duration: 8, 
+                  scale: { 
+                    duration: 4,
                     ease: "easeInOut", 
                     repeat: Infinity,
-                    delay: 1.2 // wait for enter animation to finish
+                    delay: 1.2 
+                  },
+                  skewX: { 
+                    duration: 5,
+                    ease: "easeInOut", 
+                    repeat: Infinity,
+                    delay: 1.2 
+                  },
+                  y: { duration: 1.2, ease: "easeOut" },
+                  rotate: { 
+                    duration: 6,
+                    ease: "easeInOut", 
+                    repeat: Infinity,
+                    delay: 1.2 
                   }
                 }
               }}
@@ -112,11 +113,11 @@ export default function ValliChedi({
           </AnimatePresence>
         </div>
 
-        {/* Humorous parental consequence alert badge */}
-        <div className="valli-chedi__consequence-badge">
-          <span className="valli-chedi__consequence-icon">⚡</span>
-          <span className="valli-chedi__consequence-text">
-            {LEVEL_CONSEQUENCES[growthLevel] || LEVEL_CONSEQUENCES[5]}
+        {/* Malayalam Parental Punchline Dialogue */}
+        <div className="valli-chedi__malayalam-quote">
+          <span className="valli-chedi__malayalam-icon">💬</span>
+          <span className="valli-chedi__malayalam-text">
+            "{malayalamQuote}"
           </span>
         </div>
       </div>

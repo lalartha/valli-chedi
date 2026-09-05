@@ -1,6 +1,5 @@
 .valli-debt-card {
   background: var(--bg-surface);
-  margin-top: 1rem;
 }
 
 .valli-debt-card.empty p {

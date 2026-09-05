@@ -50,7 +50,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <Header
-        title={`Hey, ${state.userName || 'there'} 👋`}
+        title={state.userName ? `Hey, ${state.userName} 👋` : 'Hey Arthalal 👋'}
         subtitle="Let's see what vallis you've grown today."
       />
 

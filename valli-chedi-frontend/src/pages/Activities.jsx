@@ -10,6 +10,7 @@ import EmptyState from '../components/common/EmptyState';
 import ConsequenceWarningDialog from '../components/activities/ConsequenceWarningDialog';
 import ConsequenceSummaryModal from '../components/activities/ConsequenceSummaryModal';
 import { useActivities, useCreateActivity, usePreviewActivity } from '../hooks/useActivities';
+import { getRandomActivityQuote } from '../utils/malayalamQuotes';
 import './Activities.css';
 
 const CATEGORIES = [
@@ -129,6 +130,22 @@ export default function Activities() {
 
       {showForm && (
         <Card className="activities-page__form-card">
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'var(--terracotta-50, #fdf4f0)',
+            border: '1px dashed var(--terracotta-300, #df957a)',
+            borderRadius: '8px',
+            padding: '8px 12px',
+            marginBottom: '1rem',
+            color: 'var(--terracotta-dark, #803018)',
+            fontWeight: '600',
+            fontSize: '0.9rem'
+          }}>
+            <span>👨‍🦳</span>
+            <span>"{getRandomActivityQuote()}"</span>
+          </div>
           <h3 className="activities-page__form-title">Create Activity</h3>
           <form className="activities-page__form" onSubmit={handleSubmit}>
             <div className="form-row">

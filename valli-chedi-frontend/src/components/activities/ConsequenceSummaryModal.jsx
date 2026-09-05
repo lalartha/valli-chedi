@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Leaf, Home, Phone, BookOpen, Car } from 'lucide-react';
 import Button from '../common/Button';
+import { getRandomActivityQuote } from '../../utils/malayalamQuotes';
 import './ConsequenceSummaryModal.css';
 
 const ICON_MAP = {
@@ -16,6 +17,7 @@ export default function ConsequenceSummaryModal({ data, onClose }) {
   if (!data) return null;
 
   const { activity, vallisCreated, homeImpact, valliAdded } = data;
+  const quote = useMemo(() => getRandomActivityQuote(), []);
 
   return (
     <div className="modal-overlay">
@@ -28,6 +30,20 @@ export default function ConsequenceSummaryModal({ data, onClose }) {
         <div className="summary-modal__header">
           <Leaf className="summary-icon" size={24} />
           <h3>VALLI ADDED</h3>
+        </div>
+
+        <div style={{
+          background: 'var(--terracotta-50, #fdf4f0)',
+          border: '1px dashed var(--terracotta-300, #df957a)',
+          borderRadius: '8px',
+          padding: '8px 12px',
+          marginBottom: '1rem',
+          textAlign: 'center',
+          color: 'var(--terracotta-dark, #803018)',
+          fontWeight: '700',
+          fontSize: '0.92rem'
+        }}>
+          👨‍🦳 "{quote}"
         </div>
 
         <div className="summary-modal__activity">

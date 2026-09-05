@@ -36,9 +36,28 @@
   position: relative;
 }
 
-.header__notification:hover {
+.header__notification:hover,
+.header__notification--active {
   background: var(--sap-green-50);
   color: var(--sap-green);
+}
+
+.header__notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--terracotta);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid var(--white);
 }
 
 .header__user {
@@ -46,6 +65,66 @@
   align-items: center;
   gap: var(--space-xs);
   cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.header__user:hover {
+  background: var(--sand-light);
+}
+
+.header__user-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 200px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 8px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: dropdownIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header__user-info {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 4px;
+}
+
+.header__user-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header__user-email {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.header__logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.8rem;
+  color: var(--terracotta);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.header__logout-btn:hover {
+  background: #fdf3f0;
+  color: var(--terracotta-dark);
 }
 
 .header__avatar {
@@ -59,7 +138,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: var(--space-lg) 0 var(--space-md);
+    padding: var(--space-md) 0 var(--space-sm);
   }
 
   .header__title {

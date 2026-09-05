@@ -1,4 +1,5 @@
 import Card, { CardTitle } from '../common/Card';
+import { ACHAN_SCORE_REMARK } from '../../utils/malayalamQuotes';
 import './ValliScore.css';
 
 const SEVERITY_LABELS = {
@@ -32,7 +33,7 @@ const SEVERITY_SUBTEXT = {
   UNCONTAINED: 'Status: Disowned & homeless',
 };
 
-export default function ValliScore({ totalPoints = 0, severity = 'SEED', maxPoints = 1000 }) {
+export default function ValliScore({ totalPoints = 0, severity = 'SEED', maxPoints = 100 }) {
   const label = SEVERITY_LABELS[severity] || 'Average';
   const copy = SEVERITY_COPY[severity] || 'Not out of control yet.\nBut it wants to be.';
   const subtext = SEVERITY_SUBTEXT[severity] || 'Status: Consequence pending';
@@ -53,6 +54,14 @@ export default function ValliScore({ totalPoints = 0, severity = 'SEED', maxPoin
       </div>
 
       <p className="valli-score__copy">{copy}</p>
+
+      {/* Achan's verdict on the score */}
+      <div className="valli-score__achan-remark">
+        <div className="valli-score__achan-header">
+          <span className="valli-score__achan-tag">👨‍🦳 Achan's Verdict</span>
+        </div>
+        <p className="valli-score__achan-quote">"{ACHAN_SCORE_REMARK}"</p>
+      </div>
 
       {/* Decorative terracotta curved accent stroke matching reference mockup */}
       <div className="valli-score__accent-stroke" aria-hidden="true">

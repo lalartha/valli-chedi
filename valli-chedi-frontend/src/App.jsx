@@ -9,6 +9,7 @@ import Reminders from './pages/Reminders';
 import Statistics from './pages/Statistics';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
+import FamilyCheckIn from './pages/FamilyCheckIn';
 import Loading from './components/common/Loading';
 
 const queryClient = new QueryClient({
@@ -61,6 +62,7 @@ function AppRoutes() {
         <Route path="activities" element={<Activities />} />
         <Route path="valli-chain" element={<ValliChainPage />} />
         <Route path="reminders" element={<Reminders />} />
+        <Route path="family-checkin" element={<FamilyCheckIn />} />
         <Route path="stats" element={<Statistics />} />
         <Route path="settings" element={<Settings />} />
       </Route>

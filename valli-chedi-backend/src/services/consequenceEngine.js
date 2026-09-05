@@ -147,19 +147,16 @@ export async function analyzeActivity(userId, activity, options = {}) {
     result.vallisCreated.push(homeValli);
   }
 
-  // ── 6. Achan Check-In Reminder ─────────────────────────────────────────
+  // ── 6. Family Check-In Reminders ───────────────────────────────────────
   if (activity.overnight && !activity.returned_home) {
-    const reminder = await reminderEngine.createAchanReminder(
+    const reminders = await reminderEngine.createFamilyReminders(
       userId,
       activity.id,
       activity.start_time
     );
     result.reminder = {
       enabled: true,
-      type: 'PARENT_CHECKIN',
-      recipient: 'ACHAN',
-      intervalHours: 5,
-      ...reminder,
+      ...reminders,
     };
   }
 

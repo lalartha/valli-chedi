@@ -2,6 +2,7 @@ import { Pen } from 'lucide-react';
 import './WisdomBar.css';
 
 const WISDOM = [
+  'ലാസ്റ്റ് കിടന്ന് മൊങ്ങാൻ ആ നോക്കിക്കോ.',
   'Plan early. Inform early. Survive peacefully.',
   'Or enjoy the jungle. Your choice. 🌿',
   'You can handle the work. Can you handle what comes after?',

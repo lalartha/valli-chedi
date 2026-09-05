@@ -1,0 +1,257 @@
+.family-checkin {
+  padding-bottom: var(--space-2xl);
+}
+
+.family-checkin__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.family-checkin__title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.02em;
+}
+
+.family-checkin__quote {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.family-checkin__trip {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.family-checkin__trip h3 {
+  font-size: var(--font-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.family-checkin__trip-name {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.family-checkin__trip-meta {
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+.family-checkin__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.family-checkin__empty {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--white);
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: var(--space-2xl);
+}
+
+.family-checkin__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-3xl);
+}
+
+.family-checkin__home-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: var(--font-base);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.family-checkin__home-btn:hover {
+  border-color: var(--sap-green);
+  color: var(--sap-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Family Reminder Card Styles */
+.family-reminder {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.family-reminder--upcoming {
+  border-left: 4px solid var(--sap-green);
+}
+
+.family-reminder--due {
+  border-left: 4px solid var(--warning-color);
+  background-color: var(--warning-bg);
+}
+
+.family-reminder--late {
+  border-left: 4px solid var(--warning-color-dark);
+}
+
+.family-reminder--missed,
+.family-reminder--danger {
+  border-left: 4px solid var(--error-color);
+  background-color: var(--error-bg);
+}
+
+.family-reminder__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.family-reminder__icon {
+  color: inherit;
+}
+
+.family-reminder__recipient {
+  font-size: var(--font-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.family-reminder__status-badge {
+  margin-left: auto;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.family-reminder--upcoming .family-reminder__status-badge {
+  background: var(--bg-surface);
+  color: var(--text-muted);
+}
+
+.family-reminder--due .family-reminder__status-badge {
+  background: var(--warning-color);
+  color: var(--white);
+  animation: pulse-badge 2s infinite;
+}
+
+.family-reminder--late .family-reminder__status-badge,
+.family-reminder--missed .family-reminder__status-badge,
+.family-reminder--danger .family-reminder__status-badge {
+  background: var(--error-color);
+  color: var(--white);
+}
+
+.family-reminder__time-block {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.family-reminder__time-label {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.family-reminder__time-value {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.family-reminder--danger .family-reminder__time-value {
+  color: var(--error-color);
+}
+
+.family-reminder__last-checkin {
+  text-align: center;
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.family-reminder__action {
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--font-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-color);
+  background: var(--white);
+  color: var(--text-primary);
+}
+
+.family-reminder__action:hover:not(:disabled) {
+  background: var(--bg-surface);
+}
+
+.family-reminder--due .family-reminder__action,
+.family-reminder--late .family-reminder__action,
+.family-reminder--missed .family-reminder__action,
+.family-reminder--danger .family-reminder__action {
+  background: var(--sap-green);
+  color: var(--white);
+  border-color: var(--sap-green);
+}
+
+.family-reminder--due .family-reminder__action:hover:not(:disabled),
+.family-reminder--late .family-reminder__action:hover:not(:disabled),
+.family-reminder--missed .family-reminder__action:hover:not(:disabled),
+.family-reminder--danger .family-reminder__action:hover:not(:disabled) {
+  background: var(--sap-green-dark);
+}
+
+.family-reminder__action:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.family-reminder__footer {
+  margin-top: var(--space-lg);
+  text-align: center;
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+@keyframes pulse-badge {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}

@@ -14,30 +14,46 @@
 import * as reminderModel from '../models/reminderModel.js';
 import * as valliEngine from './valliEngine.js';
 
-/**
- * Create an Achan check-in reminder for an overnight activity.
- *
- * @param {string} userId
- * @param {string} activityId
- * @param {string} startTime - Activity start time (first check-in = start + 5h)
- * @returns {Object|null} Created reminder or null if not needed
- */
-export async function createAchanReminder(userId, activityId, startTime) {
-  // Calculate first trigger: 5 hours after activity starts
-  const firstTrigger = new Date(startTime);
-  firstTrigger.setHours(firstTrigger.getHours() + 5);
+export async function createFamilyReminders(userId, activityId, startTime) {
+  // Achan: 5 hours
+  const achanTrigger = new Date(startTime);
+  achanTrigger.setHours(achanTrigger.getHours() + 5);
 
-  const reminder = await reminderModel.create(userId, {
+  const achan = await reminderModel.create(userId, {
     activityId,
-    type: 'PARENT_CHECKIN',
+    type: 'ACHAN_CHECKIN',
     recipient: 'ACHAN',
     intervalHours: 5,
-    nextTrigger: firstTrigger.toISOString(),
+    nextTrigger: achanTrigger.toISOString(),
+  });
+
+  // Amma: 6 hours
+  const ammaTrigger = new Date(startTime);
+  ammaTrigger.setHours(ammaTrigger.getHours() + 6);
+
+  const amma = await reminderModel.create(userId, {
+    activityId,
+    type: 'AMMA_CHECKIN',
+    recipient: 'AMMA',
+    intervalHours: 6,
+    nextTrigger: ammaTrigger.toISOString(),
+  });
+
+  // Brother: 24 hours
+  const brotherTrigger = new Date(startTime);
+  brotherTrigger.setHours(brotherTrigger.getHours() + 24);
+
+  const brother = await reminderModel.create(userId, {
+    activityId,
+    type: 'BROTHER_CHECKIN',
+    recipient: 'BROTHER',
+    intervalHours: 24,
+    nextTrigger: brotherTrigger.toISOString(),
   });
 
   return {
-    ...reminder,
-    message: '📞 Achan Check-In Protocol activated. First check-in in 5 hours.',
+    achan, amma, brother,
+    message: '📞 Family Check-In Protocol activated. Achan (5h), Amma (6h), Brother (24h).',
   };
 }
 
@@ -142,18 +158,19 @@ export async function escalateReminder(reminder) {
 
   // Create a COMMUNICATION Valli for the missed check-in
   const severity = Math.min(3 + newMissedCount * 2, 10);
+  const recipient = reminder.recipient || 'Achan';
   const valli = await valliEngine.createValli(reminder.user_id, {
     activityId: reminder.activity_id,
     category: 'COMMUNICATION',
-    title: `Missed Achan check-in #${newMissedCount}`,
-    description: getEscalationMessage(newMissedCount),
+    title: `Missed ${recipient} check-in #${newMissedCount}`,
+    description: getEscalationMessage(newMissedCount, recipient),
     rawScore: severity * 5,
   });
 
   return {
     reminderId: reminder.id,
     missedCount: newMissedCount,
-    escalationMessage: getEscalationMessage(newMissedCount),
+    escalationMessage: getEscalationMessage(newMissedCount, recipient),
     valliCreated: valli,
     nextTrigger: nextTrigger.toISOString(),
   };
@@ -163,18 +180,18 @@ export async function escalateReminder(reminder) {
  * Get escalation message based on missed count.
  * DPR Section 25 — increasingly dramatic messages.
  */
-export function getEscalationMessage(missedCount) {
+export function getEscalationMessage(missedCount, recipient = 'Achan') {
   if (missedCount === 1) {
-    return '📞 Achan Check — You haven\'t called Achan in 5 hours. Please call now.';
+    return `📞 ${recipient} Check — You haven't called ${recipient} on time. Please call now.`;
   }
   if (missedCount === 2) {
-    return '⚠️ ACHAN VALLI — You REALLY should call Achan. This is not optional.';
+    return `⚠️ ${recipient.toUpperCase()} VALLI — You REALLY should call ${recipient}. This is not optional.`;
   }
   if (missedCount === 3) {
     return '🚨 VALLI ESCALATION — Communication protocol has been neglected. The chedi is aware.';
   }
   if (missedCount === 4) {
-    return '💀 CRITICAL COMMUNICATION FAILURE — Achan has not heard from you. The valli grows unchecked.';
+    return `💀 CRITICAL COMMUNICATION FAILURE — ${recipient} has not heard from you. The valli grows unchecked.`;
   }
   return `💀💀 COMMUNICATION CATASTROPHE (${missedCount} missed) — At this point, the chedi has its own communication system.`;
 }
