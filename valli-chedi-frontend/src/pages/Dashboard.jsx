@@ -63,8 +63,8 @@ export default function Dashboard() {
               severity={state.severity || 'SEED'}
             />
             <ValliChedi
+              valliCount={state.totalPoints || 0}
               growthLevel={state.growthLevel || 1}
-              growthPercentage={state.growthPercentage || 0}
               severity={state.severity || 'SEED'}
             />
           </div>

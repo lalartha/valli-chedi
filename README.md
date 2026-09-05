@@ -1,101 +1,73 @@
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
-
-
-# [Project Name] 🎯
-
+# Valli Chedi 🌿 🎯
 
 ## Basic Details
-### Team Name: [Name]
-
+### Team Name: Valli Squad
 
 ### Team Members
-- Team Lead: Arthalal C - college of engineering perumon
+- Team Lead: Arthalal C - College of Engineering Perumon
 
 ### Project Description
-[2-3 lines about what your project does]
+Valli Chedi is a humorous consequence-tracking web app designed for young adults in Indian households. It visually tracks your "valli" (trouble) score as a growing vine (chedi), representing how close you are to getting kicked out of the house.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+We never know exactly *how much* trouble we are in with our parents until our luggage is already packed and placed outside the front door. The anxiety of not knowing the severity of your actions is real.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+A digital "Valli Chedi" (trouble vine) that grows with every bad decision you make (like coming home after 10 PM, skipping family functions, or getting caught on a late-night call). It accurately predicts your imminent disownment through 5 detailed stages of plant growth, complete with hilarious parental consequences!
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- **Languages used**: JavaScript, HTML, CSS
+- **Frameworks used**: React, Vite, Express.js
+- **Libraries used**: Framer Motion (for smooth animations), Supabase (for database operations)
+- **Tools used**: Node.js, Git, npm
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+```bash
+# Clone the repository
+git clone https://github.com/lalartha/valli-chedi.git
+cd valli-chedi
+
+# Install backend dependencies
+cd valli-chedi-backend
+npm install
+
+# Install frontend dependencies
+cd ../valli-chedi-frontend
+npm install
+```
 
 # Run
-[commands]
+```bash
+# Start the backend server (in one terminal)
+cd valli-chedi-backend
+npm run dev
+
+# Start the frontend dev server (in another terminal)
+cd ../valli-chedi-frontend
+npm run dev
+```
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots
+![Seed Stage](./valli-chedi-frontend/public/valli/valli-01.png)
+*Stage 1: Suspiciously peaceful. Parents assume you are studying.*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Sprout Stage](./valli-chedi-frontend/public/valli/valli-03.png)
+*Stage 3: Preliminary questioning. The vine is growing!*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+![Fully Grown](./valli-chedi-frontend/public/valli/valli-05.png)
+*Stage 5: Danger Zone. Eviction is imminent!*
 
 ---
-Made with ❤️ at TinkerHub Useless Projects 
+Made with ❤️ at TinkerHub Useless Projects
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
 ![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
-
-
-
